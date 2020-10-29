@@ -1,0 +1,13 @@
+.cell {
+    border: 1px solid gray;
+    min-width: 20px;
+    min-height: 20px;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.changedColor {
+    background-color: hotpink; /* Wenn ich hier transition einfüge, beeinflusst dass, wie lange es dauert, bis die Farbe */
+} /* pink wird, aber nicht wie lange sie pink bleibt! */
+
+/* Die Klasse darf erst eine gewisse Zeit nach mouseleave entfernt werden.
