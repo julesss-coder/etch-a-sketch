@@ -15,6 +15,8 @@
 // werden.
 // GELÖST: die verschiedenen Funktionne zum Farbenändern in eine Funktion verpackt und in makeGrid() eingefügt.
 
+// PROBLEM 3: Vielleicht ist die Art, wie ich Reihen und Spalten erzeuge, zu kompliziert?
+
 
 const container = document.getElementById('container');
 let rows = document.getElementsByClassName('gridRow');
@@ -24,7 +26,7 @@ const clearGrid = document.getElementById('clearGrid');
 // Event listeners
 clearGrid.addEventListener('click', function(e) {
   container.innerHTML = '';
-  let rowNum = prompt('How many squares per side should you sketchpad have?');
+  let rowNum = prompt('How many squares per side should your sketchpad have?');
   makeGrid(Number(rowNum));
 });
 
@@ -36,6 +38,7 @@ function makeGrid(rowNum) {
   makeColumns(rowNum);
   changeColor();
 }
+
 
 // Takes (rows, columns) input and makes a grid
 function makeRows(rowNum) {
