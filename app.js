@@ -1,13 +1,40 @@
+
+
+// PROBLEM 1:
+// Größe des Bereichs, in dem das Grid aufgebaut wird, soll immer gleich sein. Ev. Window-Element verwenden?
+// Oder viewport? 
+// Wie kann ich die Anpassbarkeit der Divs steuern?
+// Was ist der derzeitige Größenbereich, nach dem sich die Griderstellung richtet?
+// --> Umsetzung als CSS Flexbox OK
+// Kann ich mit Flexbox die Größe des Bereichs festlegen? Die Größe des Flexbox-Containers?
+
+
+// PROBLEM 2: 
+// beim ersten Grid funktioniert die Einfärbung, nachdem ein neuer Wert eingegeben
+// wurde, nicht mehr. D.h. in makegrid() muss noch die Funktion, die die Farbe ändert, eingefügt
+// werden.
+// GELÖST: die verschiedenen Funktionne zum Farbenändern in eine Funktion verpackt und in makeGrid() eingefügt.
+
+
 const container = document.getElementById('container');
 let rows = document.getElementsByClassName('gridRow');
 let cells = document.getElementsByClassName('cell');
- 
-  
-makeGrid();
+const clearGrid = document.getElementById('clearGrid');
 
-function makeGrid() {
-  makeRows(16);
-  makeColumns(16);
+// Event listeners
+clearGrid.addEventListener('click', function(e) {
+  container.innerHTML = '';
+  let rowNum = prompt('How many squares per side should you sketchpad have?');
+  makeGrid(Number(rowNum));
+});
+
+
+makeGrid(rowNum = 16);
+
+function makeGrid(rowNum) {
+  makeRows(rowNum);
+  makeColumns(rowNum);
+  changeColor();
 }
 
 // Takes (rows, columns) input and makes a grid
@@ -28,6 +55,7 @@ function makeColumns(cellNum) {
   };
 };
 
+/*
 // Grab individual divs
 const divs = Array.from(document.querySelectorAll('.gridRow .cell'));
 
@@ -46,3 +74,25 @@ function removeClass(e) {
 divs.forEach(function(div) {
   div.addEventListener('mouseleave', setTimeout(removeClass, 2000))
 });
+*/
+
+function changeColor() {
+  // Grab individual divs
+  const divs = Array.from(document.querySelectorAll('.gridRow .cell'));
+
+  // change div color on mouseenter
+  divs.forEach(function(div) {
+    div.addEventListener('mouseenter', function(e) {
+      div.classList.add("changedColor");
+    });
+  });
+
+  // Change div color back to normal on mouseleave
+  function removeClass(e) {
+    div.classList.remove("changedColor");
+  };
+
+  divs.forEach(function(div) {
+    div.addEventListener('mouseleave', setTimeout(removeClass, 2000))
+  });
+}
