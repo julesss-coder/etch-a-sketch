@@ -2,26 +2,35 @@ body {
     box-sizing: border-box;
     margin: 25px auto;
     text-align: center;
+    background-image: linear-gradient(to bottom, #ff3333, #ff9933, #ffcc33);
 }
 
-#headline {
-    text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3em;
 }
 
 #container {
-    display: flex;
+    width: 500px;
+    height: 500px;
+    margin: 25px auto;
+    border: 1px solid black;
+}
+
+button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: .5em;
+    margin: 2px;
+    background-color: whitesmoke;
 }
 
 .cell {
-    border: 1px solid gray;
-    min-width: 20px;
-    min-height: 20px;
+    border: 1px solid black;
 }
 
-
 .changedColor {
-    background-color: hotpink; /* Wenn ich hier transition einfüge, beeinflusst dass, wie lange es dauert, bis die Farbe */
-} /* pink wird, aber nicht wie lange sie pink bleibt! */
+    background-color: rgba(140, 50, 224, 0.938);
+}
 
-/* Die Klasse darf erst eine gewisse Zeit nach mouseleave entfernt werden.*/
