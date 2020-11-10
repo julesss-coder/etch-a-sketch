@@ -4,15 +4,15 @@ const reset = document.querySelector('#reset');
 const randomColor = document.querySelector('#randomColor');
 const shade = document.querySelector('#shade');
 
-// Event listener
+// Event listeners
   // for reset button: make regular grid
 reset.addEventListener('click', function(e) {
-    cellNum = prompt('How many cells per side should the new square have? (max 100)');
+    cellNum = prompt('Please enter the number of cells per grid side (up to 100).');
     if(cellNum <= 100) {
         container.innerHTML = '';
         makeGrid(cellNum);
     } else {
-        cellNum = prompt('Please choose a number <= 100 for your new grid\'s side length');
+        cellNum = prompt('Please choose a number up to 100 for your new grid\'s side length');
     }
 });
   // for "random color" button (don't create new grid, just change color)
@@ -25,7 +25,7 @@ randomColor.addEventListener('click', function(e) {
         });
     });
 });
-  // for shade button
+  // for shade button (don't create new grid, just change color to shades)
 shade.addEventListener('click', function(e) {
     let cells = document.querySelectorAll('.cell');
     cells.forEach(function(cell) {
@@ -37,6 +37,7 @@ shade.addEventListener('click', function(e) {
     });
 });
 
+// Functions:
 // generate random color
 function generateRandomColor() {
     let red = Math.floor(Math.random() * (255 + 1));
@@ -44,7 +45,6 @@ function generateRandomColor() {
     let blue = Math.floor(Math.random() * (255 + 1));
     return `rgb(${red},${green},${blue})`;
 }
-
 
 // Make a grid
 function makeGrid(cellNum) {
@@ -61,26 +61,15 @@ function makeGrid(cellNum) {
     changeColor();
 }
 
-// make default grid
-makeGrid(cellNum = 16);
-
-// change color
+// change color upon mouseover
 function changeColor() {
     let cells = document.querySelectorAll('.cell');
     cells.forEach(function(cell) {
-    // add class that changes color upon mouseover
-    // color should not be removed - so we can just leave it
         cell.addEventListener('mouseover', function(e) {
             cell.classList.add('changedColor');
         });
     });
 }
 
-// change each cell to random color on mouseover
-// create random color: 
-
-
-// use rgb(red, green, blue), each value is between 0 and 255
-// create random number between 0 and 255 for each color in the array(?)
-// put them together with string literals to form a color and style the cells like so:
-// cell.style.backgroundColor = 'rgb(`${red, green, blue}`';
+// make default grid
+makeGrid(cellNum = 16);
